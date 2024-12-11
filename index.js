@@ -128,3 +128,43 @@ var teacher2 = {
         city: 'Rome',
     },
 };
+var arrayOfTeachers = [];
+arrayOfTeachers.push(teacher1);
+arrayOfTeachers.push(teacher2);
+// arrayOfTeachers.push('mario') // <-- errore, posso aggiungerci solamente docenti
+var arrayOfModules = arrayOfTeachers.map(function (t) {
+    return t.modules;
+});
+var backendTeacher1 = {
+    name: 'Gianluigi',
+    modules: ['U5'],
+    backendLanguages: ['PHP', 'Java'],
+    geoArea: {
+        region: 'FVG',
+        city: 'Trieste',
+    },
+};
+var addr1 = {
+    street: 'Via del molo',
+    civicNumber: 5,
+    zipCode: 35782,
+    city: 'Viareggio',
+    area: 'Italy',
+};
+var addr2 = {
+    street: 'Via Roma',
+    civicNumber: 1,
+    zipCode: 34752,
+    city: 'Viterbo',
+    area: 'Italy',
+};
+var addr3 = {
+    street: 'Bullets Street',
+    civicNumber: 1342,
+    zipCode: '5GFH1',
+    city: 'Nashville',
+    area: {
+        state: 'Tennessee',
+        country: 'USA',
+    },
+};

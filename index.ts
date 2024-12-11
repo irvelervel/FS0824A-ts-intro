@@ -196,3 +196,74 @@ const teacher2: EpicodeTeacher = {
     city: 'Rome',
   },
 }
+
+const arrayOfTeachers: EpicodeTeacher[] = []
+arrayOfTeachers.push(teacher1)
+arrayOfTeachers.push(teacher2)
+// arrayOfTeachers.push('mario') // <-- errore, posso aggiungerci solamente docenti
+
+const arrayOfModules: string[][] = arrayOfTeachers.map((t) => {
+  return t.modules
+})
+// [['U4'], ['U1', 'U2']] // array di moduli! (array di array di stringhe)
+
+// ESTENSIONI DI INTERFACCE
+interface EpicodeBackendTeacher extends EpicodeTeacher {
+  // ereditarietà
+  // ho automaticamente eredito da EpicodeTeacher tutte le sue proprietà
+  backendLanguages: string[]
+}
+
+const backendTeacher1: EpicodeBackendTeacher = {
+  name: 'Gianluigi',
+  modules: ['U5'],
+  backendLanguages: ['PHP', 'Java'],
+  geoArea: {
+    region: 'FVG',
+    city: 'Trieste',
+  },
+}
+
+// G E N E R I C S
+// un GENERIC è un TIPO di dato passato come PARAMETRO per un'interfaccia
+// il suo scopo è rendere più GENERICA, RIUTILIZZABILE un'INTERFACCIA
+
+interface AmericanArea {
+  state: string
+  country: string
+}
+
+interface Address<T> {
+  street: string
+  civicNumber: SpecialType
+  zipCode: SpecialType
+  city: string
+  area: T // non lo so quale sarà, lo passerò al momento dell'utilizzo
+}
+
+const addr1: Address<string> = {
+  street: 'Via del molo',
+  civicNumber: 5,
+  zipCode: 35782,
+  city: 'Viareggio',
+  area: 'Italy',
+}
+
+const addr2: Address<string> = {
+  street: 'Via Roma',
+  civicNumber: 1,
+  zipCode: 34752,
+  city: 'Viterbo',
+  area: 'Italy',
+}
+
+const addr3: Address<AmericanArea> = {
+  street: 'Bullets Street',
+  civicNumber: 1342,
+  zipCode: '5GFH1',
+  city: 'Nashville',
+  area: {
+    state: 'Tennessee',
+    country: 'USA',
+  },
+}
