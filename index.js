@@ -61,3 +61,70 @@ console.log(specialGreetings('stefano', 'ciao'));
 console.log(specialGreetings('luca', 'buonsalve'));
 // grazie al secondo parametro dichiarato come opzionale posso invocarla anche solamente con il nome
 console.log(specialGreetings('gianmarco'));
+// TIPI DI DATO COMPLESSI
+// ARRAY
+var arrayOfNames = ['Massimo', 'Serena', 'Giulia'];
+arrayOfNames.push('Patricia');
+var arrayOfNumbers = [1, 2, 3];
+arrayOfNumbers.splice(0, 1, 100); // toglie l'1 e lo sostituisce con 100
+console.log(arrayOfNumbers);
+var mixedArray = ['Massimo', 100];
+var mixedArray2 = ['Massimo', 100]; // <-- stessa cosa utilizzando l'Alias SpecialType
+var mixedArray3 = []; // senza specificare il tipo, la deduzione di TS non avrebbe mai potuto capire che questo array inizialmente vuoto avrebbe dovuto poter ospitare sia stringhe che numeri
+mixedArray3.push('stefano');
+mixedArray3.push(1000);
+// metodo alternativo per dichiarare un array
+var array1 = [];
+var array2 = [];
+// TUPLA
+// una tupla è una dichiarazione più stringente di un array, nel quale forniamo i tipi per ogni valore individualmente e ne definiamo implicitamente anche la lunghezza
+// array normale
+var arr1 = [100, 'mario', 10];
+// tupla
+var tuple1 = ['francesco', 5, 'francois'];
+arrayOfNames.forEach(function (n) {
+    console.log(n.slice(0, 2));
+});
+mixedArray2.forEach(function (boh) {
+    // mixedArray2 è un array misto, di stringhe o numeri
+    // "boh."" qui mi mostrerebbe i metodi COMUNI tra array e stringhe (per non sbagliare)
+    // però se vado a specificare che boh sia una stringa...
+    if (typeof boh === 'string') {
+        // ...mi farà vedere tutti i metodi disponibili per le stringhe
+        boh.toUpperCase();
+    }
+    else {
+        // ...mi farà vedere tutti i metodi disponibili per i numeri
+        boh.toPrecision(2);
+    }
+});
+// OGGETTI
+var pet1 = {
+    species: 'Dog',
+    breed: 'Labrador',
+    age: 4,
+};
+console.log(pet1.species.concat('go'));
+var pet2 = {
+    breed: 'Shorthair',
+    species: 'Cat',
+    age: 3,
+};
+var pet3 = {
+    breed: 'Cocorita',
+    species: 'Parrot',
+    age: 'età sconosciuta',
+};
+console.log(pet3.age);
+var teacher1 = {
+    name: 'Federico',
+    modules: ['U4'],
+};
+var teacher2 = {
+    name: 'Marco',
+    modules: ['U1', 'U2'],
+    geoArea: {
+        region: 'Lazio',
+        city: 'Rome',
+    },
+};
